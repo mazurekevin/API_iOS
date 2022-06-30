@@ -3,6 +3,7 @@
   <component name="net.techminded.npmania.NpmaniaSettingsState">
     <option name="actions">
       <map>
+        <entry key="npm run-script start" value="npm run-script start" />
         <entry key="npm run-script test" value="npm run-script test" />
       </map>
     </option>

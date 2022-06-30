@@ -39,23 +39,7 @@ export class UserController{
         }
         return null;
     }
-    async getByMail(mail: string): Promise<User|null>{
-        const res = await this.connection.query(`SELECT id, name, mail, password FROM user WHERE mail = ?`,[mail])
-        const data = res[0];
-        if (Array.isArray(data)) {
-            const rows = data as RowDataPacket[]
-            if (rows.length > 0) {
-                const row = rows[0]
-                return new User({
-                    id: row["id"],
-                    name: row["name"],
-                    mail: row["mail"],
-                    password: row["password"]
-                })
-            }
-        }
-        return null;
-    }
+
 
     async getById(id: string): Promise<User|null>{
         const res = await this.connection.query(`SELECT id, name, mail, password FROM user WHERE id = ${escape(id)}`)
