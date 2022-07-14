@@ -25,7 +25,8 @@ router.get("/getByName/:name", async function(req, res, next){
 router.get("/getById/:id", async function(req, res, next){
     const connection = await DatabaseUtils.getConnection()
     const userController = new UserController(connection)
-    const user = await userController.getById(req.params.id)
+    let id = Number(req.params.id);
+    const user = await userController.getById(id)
     if(user === null){
         res.status(404).end()
     }else{
@@ -38,7 +39,8 @@ router.get("/getById/:id", async function(req, res, next){
 router.delete("/delete/:id",async function(req, res){
     const connection = await DatabaseUtils.getConnection()
     const userController = new UserController(connection);
-    const success = await userController.removeById(req.params.id)
+    let id = Number(req.params.id);
+    const success = await userController.removeById(id)
     if(success){
         res.status(204).end()
     }else{

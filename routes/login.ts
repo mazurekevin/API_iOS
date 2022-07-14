@@ -2,9 +2,9 @@ import express from "express";
 import {DatabaseUtils} from "../database";
 import {LoginController} from "../controllers/login";
 
-//const router = express.Router();
+const router = express.Router();
 
-/*router.post("/checkLogin", async function(req, res, next){
+router.post("/login/checkLogin", async function(req, res, next){
     const connection = await DatabaseUtils.getConnection()
     const loginController = new LoginController(connection)
     const login = req.body
@@ -15,4 +15,5 @@ import {LoginController} from "../controllers/login";
         res.json(user)
     }
 
-})*/
+})
+export default router;

@@ -41,8 +41,8 @@ export class UserController{
     }
 
 
-    async getById(id: string): Promise<User|null>{
-        const res = await this.connection.query(`SELECT id, name, mail, password FROM user WHERE id = ${escape(id)}`)
+    async getById(id: number): Promise<User|null>{
+        const res = await this.connection.query(`SELECT id, name, mail, password FROM user WHERE id = ${id}`)
         const data = res[0];
         if (Array.isArray(data)) {
             const rows = data as RowDataPacket[]
@@ -60,9 +60,9 @@ export class UserController{
     }
 
 
-    async removeById(id: string): Promise<boolean>{
+    async removeById(id: number): Promise<boolean>{
         try{
-            const res = await this.connection.execute(`DELETE FROM user WHERE id = ${escape(id)}`)
+            const res = await this.connection.execute(`DELETE FROM user WHERE id = ${id}`)
             const headers = res[0] as ResultSetHeader
             return headers.affectedRows===1
 
