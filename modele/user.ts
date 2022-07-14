@@ -1,12 +1,12 @@
 export interface IUserProps{
-    id: string;
+    id: number;
     name: string;
     mail : string;
     password: string;
 
 }
 export class User implements IUserProps{
-    private _id: string;
+    private _id: number;
     private _name: string;
     private _mail : string;
     private _password: string;
@@ -20,11 +20,11 @@ export class User implements IUserProps{
 
     }
 
-    get id(): string {
+    get id(): number {
         return this._id;
     }
 
-    set id(value: string) {
+    set id(value: number) {
         this._id = value;
     }
 
