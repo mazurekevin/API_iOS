@@ -57,7 +57,7 @@ routerChanel.post("/createChanel",async function(req,res,next){
     }
 })
 
-router.delete("/delete/:id",async function(req, res){
+routerChanel.delete("/delete/:id",async function(req, res){
     const connection = await DatabaseUtils.getConnection()
     const chanelController = new ChanelController(connection);
     let id = Number(req.params.id);
