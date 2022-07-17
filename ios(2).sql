@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Jul 14, 2022 at 03:03 PM
+-- Generation Time: Jul 17, 2022 at 09:53 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -66,6 +66,26 @@ CREATE TABLE `comment` (
 INSERT INTO `comment` (`idComment`, `idChanel`, `idUser`, `username`, `content`, `createDate`) VALUES
 (1, 34567, 1, 'kevin', 'ndjvfjhjdkdnvkfjb', '14/07/2022'),
 (1, 34567, 1, 'kevin', 'ndjvfjhjdkdnvkfjb', '14/07/2022');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `favoris`
+--
+
+CREATE TABLE `favoris` (
+  `idFavoris` int(255) NOT NULL,
+  `idAnime` varchar(255) NOT NULL,
+  `idUser` int(255) NOT NULL,
+  `animeName` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `favoris`
+--
+
+INSERT INTO `favoris` (`idFavoris`, `idAnime`, `idUser`, `animeName`) VALUES
+(1, '34567', 1, 'kevin');
 
 -- --------------------------------------------------------
 
