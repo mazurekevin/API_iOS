@@ -43,6 +43,18 @@ routerUserChanel.get("/getByChanelId/:id", async function(req, res, next){
 
 })
 
+routerUserChanel.delete("/delete/:id",async function(req, res){
+    const connection = await DatabaseUtils.getConnection()
+    const userChanelController = new UserChanelController(connection);
+    let id = Number(req.params.id);
+    const success = await userChanelController.removeById(id)
+    if(success){
+        res.status(204).end()
+    }else{
+        res.status(404).end()
+    }
+})
+
 
 
 

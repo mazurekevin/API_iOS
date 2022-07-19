@@ -63,4 +63,17 @@ export class UserChanelController {
         return null;
     }
 
+    async removeById(id: number): Promise<boolean>{
+        try{
+            const res = await this.connection.execute(`DELETE FROM userchanel WHERE idChanel = ${id}`)
+            const headers = res[0] as ResultSetHeader
+            return headers.affectedRows===1
+
+        }catch(err){
+            console.error(err)
+            return false
+        }
+
+    }
+
 }
