@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Jul 17, 2022 at 09:53 PM
+-- Generation Time: Jul 19, 2022 at 09:23 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -133,6 +133,26 @@ INSERT INTO `user` (`id`, `name`, `mail`, `password`) VALUES
 (123, 'Jeanmmm', 'test@test.fr', 'jesuislemdp'),
 (123, 'Jeanmmm', 'test@test.fr', 'jesuislemdp'),
 (123, 'Jeanmmm', 'test@test.fr', 'jesuislemdp');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userchanel`
+--
+
+CREATE TABLE `userchanel` (
+  `idChanel` int(255) NOT NULL,
+  `idUser` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `userchanel`
+--
+
+INSERT INTO `userchanel` (`idChanel`, `idUser`) VALUES
+(1, 2),
+(1, 2),
+(1, 2);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

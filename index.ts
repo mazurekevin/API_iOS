@@ -3,6 +3,7 @@ import routerChanel from "./routes/chanel";
 import routerComment from "./routes/comment";
 import routerLike from "./routes/like";
 import routerFavoris from "./routes/favoris";
+import routerUserChanel from "./routes/userChanel";
 
 const express = require('express');
 
@@ -19,6 +20,8 @@ app.use('/comment',routerComment);
 app.use('/like',routerLike);
 
 app.use('/favoris',routerFavoris);
+
+app.use('/userChanel',routerUserChanel);
 
 app.listen(process.env.PORT || '3000',()=>{
     console.log(`Server listening on port: ${process.env.PORT || '3000'}`)
