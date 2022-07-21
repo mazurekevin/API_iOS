@@ -11,7 +11,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/api',router);
+app.use('/user',router);
 
 app.use('/chanel',routerChanel);
 
