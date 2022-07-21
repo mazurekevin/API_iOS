@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Jul 19, 2022 at 09:23 PM
+-- Generation Time: Jul 21, 2022 at 08:56 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -32,6 +32,7 @@ CREATE TABLE `chanel` (
   `idChanel` int(255) NOT NULL,
   `chanelName` varchar(255) NOT NULL,
   `Theme` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
   `idUser` int(255) NOT NULL,
   `username` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -40,9 +41,10 @@ CREATE TABLE `chanel` (
 -- Dumping data for table `chanel`
 --
 
-INSERT INTO `chanel` (`idChanel`, `chanelName`, `Theme`, `idUser`, `username`) VALUES
-(34567, 'test', 'incroyable', 1, 'kevin'),
-(34567, 'test', 'incroyable', 1, 'kevin');
+INSERT INTO `chanel` (`idChanel`, `chanelName`, `Theme`, `description`, `idUser`, `username`) VALUES
+(34567, 'test', 'incroyable', '', 1, 'kevin'),
+(34567, 'test', 'incroyable', '', 1, 'kevin'),
+(34567, 'test', 'incroyable', 'alors voila', 1, 'kevin');
 
 -- --------------------------------------------------------
 
@@ -144,15 +146,6 @@ CREATE TABLE `userchanel` (
   `idChanel` int(255) NOT NULL,
   `idUser` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `userchanel`
---
-
-INSERT INTO `userchanel` (`idChanel`, `idUser`) VALUES
-(1, 2),
-(1, 2),
-(1, 2);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
