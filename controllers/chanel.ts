@@ -12,7 +12,7 @@ export class ChanelController {
     }
 
     async getChanelById(id: number): Promise<Chanel|null>{
-        const res = await this.connection.query(`SELECT idChanel, chanelName, Theme, idUser, username FROM chanel WHERE idChanel = ${id}`)
+        const res = await this.connection.query(`SELECT idChanel, chanelName, Theme, description, idUser, username FROM chanel WHERE idChanel = ${id}`)
         const data = res[0];
         if (Array.isArray(data)) {
             const rows = data as RowDataPacket[]
@@ -22,6 +22,7 @@ export class ChanelController {
                     idChanel: row["idChanel"],
                     chanelName: row["chanelName"],
                     Theme: row["Theme"],
+                    description: row["description"],
                     idUser: row["idUser"],
                     username: row["username"]
                 })
@@ -31,7 +32,7 @@ export class ChanelController {
     }
     async getChanelByUserId(userId: number): Promise<Chanel[]|null>{
         try {
-            const res = await this.connection.query(`SELECT idChanel, chanelName, Theme, idUser, username FROM chanel WHERE idUser = ${userId}`);
+            const res = await this.connection.query(`SELECT idChanel, chanelName, Theme, description, idUser, username FROM chanel WHERE idUser = ${userId}`);
             const data = res[0];
             if(Array.isArray(data)) {
                 return (data as RowDataPacket[]).map(function(row) {
@@ -39,6 +40,7 @@ export class ChanelController {
                         idChanel: row["idChanel"],
                         chanelName: row["chanelName"],
                         Theme: row["Theme"],
+                        description: row["description"],
                         idUser: row["idUser"],
                         username: row["username"]
                     });
@@ -61,6 +63,7 @@ export class ChanelController {
                         idChanel: row["idChanel"],
                         chanelName: row["chanelName"],
                         Theme: row["Theme"],
+                        description: row["description"],
                         idUser: row["idUser"],
                         username: row["username"]
                     });
@@ -74,7 +77,7 @@ export class ChanelController {
 
     async createChanel(chanel: Chanel):Promise<boolean>{
         try{
-            const res = await this.connection.query("INSERT INTO `chanel` (idChanel,chanelName,Theme,idUser,username) VALUES (?,?,?,?,?)",[chanel.idChanel,chanel.chanelName,chanel.Theme,chanel.idUser,chanel.username]);
+            const res = await this.connection.query("INSERT INTO `chanel` (idChanel,chanelName,Theme,description,idUser,username) VALUES (?,?,?,?,?,?)",[chanel.idChanel,chanel.chanelName,chanel.Theme,chanel.description,chanel.idUser,chanel.username]);
             const headers = res[0] as ResultSetHeader
             return headers.affectedRows===1
 
