@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Jul 23, 2022 at 01:47 PM
+-- Generation Time: Jul 23, 2022 at 02:13 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -42,9 +42,7 @@ CREATE TABLE `chanel` (
 --
 
 INSERT INTO `chanel` (`idChanel`, `chanelName`, `Theme`, `description`, `idUser`, `username`) VALUES
-(34567, 'test', 'incroyable', '', 1, 'kevin'),
-(34567, 'test', 'incroyable', '', 1, 'kevin'),
-(34567, 'test', 'incroyable', 'alors voila', 1, 'kevin');
+(1, 'test', 'incroyable', 'alors voila', 1, 'kevin');
 
 -- --------------------------------------------------------
 
@@ -66,8 +64,7 @@ CREATE TABLE `comment` (
 --
 
 INSERT INTO `comment` (`idComment`, `idChanel`, `idUser`, `username`, `content`, `createDate`) VALUES
-(1, 34567, 1, 'kevin', 'ndjvfjhjdkdnvkfjb', '14/07/2022'),
-(1, 34567, 1, 'kevin', 'ndjvfjhjdkdnvkfjb', '14/07/2022');
+(1, 34567, 1, 'kevin', 'ndjvfjhjdkdnvkfjb', '');
 
 -- --------------------------------------------------------
 
@@ -86,7 +83,6 @@ CREATE TABLE `favorite` (
 --
 
 INSERT INTO `favorite` (`idFavorite`, `idAnime`, `idUser`) VALUES
-(1, '34567', 1),
 (1, '34567', 1);
 
 -- --------------------------------------------------------
@@ -107,8 +103,9 @@ CREATE TABLE `tablelike` (
 --
 
 INSERT INTO `tablelike` (`idLike`, `idComment`, `idUser`, `username`) VALUES
+(1, 1, 1, 'kevin'),
 (2, 1, 1, 'kevin'),
-(1, 1, 1, 'kevin');
+(3, 1, 1, 'kevin');
 
 -- --------------------------------------------------------
 
@@ -128,13 +125,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `mail`, `password`) VALUES
-(123, 'Adrien', 'testtest.fr', 'jesuislemdp'),
-(123, 'Jean', 'test@test.fr', 'jesuislemdp'),
-(123, 'Jean', 'test@test.fr', 'jesuislemdp'),
-(123, 'Jean', 'test@test.fr', 'jesuislemdp'),
-(123, 'Jeanmmm', 'test@test.fr', 'jesuislemdp'),
-(123, 'Jeanmmm', 'test@test.fr', 'jesuislemdp'),
-(123, 'Jeanmmm', 'test@test.fr', 'jesuislemdp');
+(1, 'Jeanmmm', 'test@test.fr', 'jesuislemdp'),
+(2, 'Jeanmmm', 'test@test.fr', 'jesuislemdp'),
+(3, 'Jeanmmm', 'test@test.fr', 'jesuislemdp');
 
 -- --------------------------------------------------------
 
@@ -153,6 +146,74 @@ CREATE TABLE `userchanel` (
 
 INSERT INTO `userchanel` (`idChanel`, `idUser`) VALUES
 (6, 2);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `chanel`
+--
+ALTER TABLE `chanel`
+  ADD PRIMARY KEY (`idChanel`);
+
+--
+-- Indexes for table `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`idComment`);
+
+--
+-- Indexes for table `favorite`
+--
+ALTER TABLE `favorite`
+  ADD PRIMARY KEY (`idFavorite`);
+
+--
+-- Indexes for table `tablelike`
+--
+ALTER TABLE `tablelike`
+  ADD PRIMARY KEY (`idLike`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `chanel`
+--
+ALTER TABLE `chanel`
+  MODIFY `idChanel` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `idComment` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `favorite`
+--
+ALTER TABLE `favorite`
+  MODIFY `idFavorite` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tablelike`
+--
+ALTER TABLE `tablelike`
+  MODIFY `idLike` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
