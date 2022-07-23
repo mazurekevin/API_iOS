@@ -8,9 +8,9 @@ export class userChanel implements IUserChanelProps {
     private _idChanel: number;
     private _idUser: number;
 
-    constructor(idChanel: number, idUser: number) {
-        this._idChanel = idChanel;
-        this._idUser = idUser;
+    constructor(props: IUserChanelProps) {
+        this._idChanel = props.idChanel;
+        this._idUser = props.idUser;
     }
 
 

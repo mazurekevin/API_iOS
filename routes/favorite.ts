@@ -2,16 +2,16 @@ import express from "express";
 import routerChanel from "./chanel";
 import {DatabaseUtils} from "../database";
 import {ChanelController} from "../controllers/chanel";
-import {FavorisController} from "../controllers/favoris";
+import {FavoritesController} from "../controllers/favorite";
 
 
-const routerFavoris = express.Router();
+const routerFavorite = express.Router();
 
-routerFavoris.get("/getFavorisById/:id", async function(req, res, next){
+routerFavorite.get("/getFavorisById/:id", async function(req, res, next){
     const connection = await DatabaseUtils.getConnection()
-    const favorisController = new FavorisController(connection)
+    const favorisController = new FavoritesController(connection)
     let id = Number(req.params.id);
-    const favoris = await favorisController.getFavorisById(id)
+    const favoris = await favorisController.getFavoritesById(id)
     if(favoris === null){
         res.status(404).end()
     }else{
@@ -20,11 +20,11 @@ routerFavoris.get("/getFavorisById/:id", async function(req, res, next){
 
 })
 
-routerFavoris.get("/getfavorisByUserId/:id", async function(req, res, next){
+routerFavorite.get("/getfavorisByUserId/:id", async function(req, res, next){
     const connection = await DatabaseUtils.getConnection()
-    const favorisController = new FavorisController(connection)
+    const favorisController = new FavoritesController(connection)
     let id = Number(req.params.id);
-    const favoris = await favorisController.getfavorisByUserId(id)
+    const favoris = await favorisController.getfavoritesByUserId(id)
     if(favoris === null){
         res.status(404).end()
     }else{
@@ -33,9 +33,9 @@ routerFavoris.get("/getfavorisByUserId/:id", async function(req, res, next){
 
 })
 
-routerFavoris.get("/getAll", async function(req, res, next){
+routerFavorite.get("/getAll", async function(req, res, next){
     const connection = await DatabaseUtils.getConnection()
-    const favorisController = new FavorisController(connection)
+    const favorisController = new FavoritesController(connection)
     const favoris = await favorisController.getAll()
     if(favoris === null){
         res.status(404).end()
@@ -46,10 +46,10 @@ routerFavoris.get("/getAll", async function(req, res, next){
 })
 
 
-routerFavoris.post("/createFavoris",async function(req,res,next){
+routerFavorite.post("/createFavoris",async function(req,res,next){
     const connection = await DatabaseUtils.getConnection()
-    const favorisController = new FavorisController(connection);
-    const success = await favorisController.createFavoris(req.body)
+    const favorisController = new FavoritesController(connection);
+    const success = await favorisController.createFavorite(req.body)
     if(success){
         res.status(200).end()
     }else{
@@ -68,9 +68,9 @@ routerFavoris.post("/createFavoris",async function(req,res,next){
     }
 })*/
 
-routerFavoris.delete("/delete/:id",async function(req, res){
+routerFavorite.delete("/delete/:id",async function(req, res){
     const connection = await DatabaseUtils.getConnection()
-    const favorisController = new FavorisController(connection);
+    const favorisController = new FavoritesController(connection);
     let id = Number(req.params.id);
     const success = await favorisController.removeById(id)
     if(success){
@@ -82,4 +82,4 @@ routerFavoris.delete("/delete/:id",async function(req, res){
 
 
 
-export default routerFavoris;
+export default routerFavorite;
