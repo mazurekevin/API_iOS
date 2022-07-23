@@ -57,16 +57,6 @@ routerFavorite.post("/createFavoris",async function(req,res,next){
     }
 })
 
-/*routerFavoris.post("/checkFavoris",async function(req,res,next){
-    const connection = await DatabaseUtils.getConnection()
-    const favorisController = new FavorisController(connection);
-    const success = await favorisController.checkFavoris(req.body)
-    if(success){
-        res.status(200).end()
-    }else{
-        res.status(404).end()
-    }
-})*/
 
 routerFavorite.delete("/delete/:id",async function(req, res){
     const connection = await DatabaseUtils.getConnection()

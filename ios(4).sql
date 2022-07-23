@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Jul 21, 2022 at 08:56 PM
+-- Generation Time: Jul 23, 2022 at 01:47 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -72,22 +72,22 @@ INSERT INTO `comment` (`idComment`, `idChanel`, `idUser`, `username`, `content`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `favoris`
+-- Table structure for table `favorite`
 --
 
-CREATE TABLE `favoris` (
-  `idFavoris` int(255) NOT NULL,
+CREATE TABLE `favorite` (
+  `idFavorite` int(255) NOT NULL,
   `idAnime` varchar(255) NOT NULL,
-  `idUser` int(255) NOT NULL,
-  `animeName` varchar(255) NOT NULL
+  `idUser` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `favoris`
+-- Dumping data for table `favorite`
 --
 
-INSERT INTO `favoris` (`idFavoris`, `idAnime`, `idUser`, `animeName`) VALUES
-(1, '34567', 1, 'kevin');
+INSERT INTO `favorite` (`idFavorite`, `idAnime`, `idUser`) VALUES
+(1, '34567', 1),
+(1, '34567', 1);
 
 -- --------------------------------------------------------
 
@@ -146,6 +146,13 @@ CREATE TABLE `userchanel` (
   `idChanel` int(255) NOT NULL,
   `idUser` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `userchanel`
+--
+
+INSERT INTO `userchanel` (`idChanel`, `idUser`) VALUES
+(6, 2);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
