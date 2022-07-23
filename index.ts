@@ -2,8 +2,9 @@ import router from "./routes/user";
 import routerChanel from "./routes/chanel";
 import routerComment from "./routes/comment";
 import routerLike from "./routes/like";
-import routerFavoris from "./routes/favoris";
+import routerFavoris from "./routes/favorite";
 import routerUserChanel from "./routes/userChanel";
+import routerFavorite from "./routes/favorite";
 
 const express = require('express');
 
@@ -19,7 +20,7 @@ app.use('/comment',routerComment);
 
 app.use('/like',routerLike);
 
-app.use('/favoris',routerFavoris);
+app.use('/favorite',routerFavorite);
 
 app.use('/userChanel',routerUserChanel);
 

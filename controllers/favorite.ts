@@ -1,45 +1,41 @@
 import {Connection} from "mysql2/promise";
 import {Chanel} from "../modele/chanel";
 import {ResultSetHeader, RowDataPacket} from "mysql2";
-import {Favoris} from "../modele/favoris";
+import {Favorite} from "../modele/favorite";
 import {checkFavoris} from "../modele/checkFavoris";
 
-export class FavorisController {
+export class FavoritesController {
     private connection: Connection;
 
     constructor(connection: Connection) {
         this.connection = connection;
     }
-    async getFavorisById(id: number): Promise<Favoris|null>{
-        const res = await this.connection.query(`SELECT idFavoris, idAnime, idUser, animeName FROM favoris WHERE idFavoris = ${id}`)
+    async getFavoritesById(id: number): Promise<Favorite|null>{
+        const res = await this.connection.query(`SELECT idFavorite, idAnime, idUser FROM favorite WHERE idFavorite = ${id}`)
         const data = res[0];
         if (Array.isArray(data)) {
             const rows = data as RowDataPacket[]
             if (rows.length > 0) {
                 const row = rows[0]
-                // @ts-ignore
-                return new Favoris({
-                    idFavoris: row["idFavoris"],
+                return new Favorite({
+                    idFavorite: row["idFavorite"],
                     idAnime: row["idAnime"],
-                    idUser: row["idUser"],
-                    animeName: row["animeName"]
+                    idUser: row["idUser"]
                 });
             }
         }
         return null;
     }
-    async getfavorisByUserId(userId: number): Promise<Favoris[]|null>{
+    async getfavoritesByUserId(userId: number): Promise<Favorite[]|null>{
         try {
-            const res = await this.connection.query(`SELECT idFavoris, idAnime, idUser, animeName FROM favoris WHERE idUser = ${userId}`);
+            const res = await this.connection.query(`SELECT idFavorite, idAnime, idUser FROM favorite WHERE idUser = ${userId}`);
             const data = res[0];
             if(Array.isArray(data)) {
                 return (data as RowDataPacket[]).map(function(row) {
-                    // @ts-ignore
-                    return new Favoris({
-                        idFavoris: row["idFavoris"],
+                    return new Favorite({
+                        idFavorite: row["idFavorite"],
                         idAnime: row["idAnime"],
-                        idUser: row["idUser"],
-                        animeName: row["animeName"]
+                        idUser: row["idUser"]
                     });
                 });
             }
@@ -50,18 +46,16 @@ export class FavorisController {
     }
 
 
-    public async getAll(): Promise<Favoris[] | null>{
+    public async getAll(): Promise<Favorite[] | null>{
         try {
-            const res = await this.connection.query(`SELECT * FROM favoris`);
+            const res = await this.connection.query(`SELECT * FROM favorite`);
             const data = res[0];
             if(Array.isArray(data)) {
                 return (data as RowDataPacket[]).map(function(row) {
-                    // @ts-ignore
-                    return new Favoris({
-                        idFavoris: row["idFavoris"],
+                    return new Favorite({
+                        idFavorite: row["idFavorite"],
                         idAnime: row["idAnime"],
-                        idUser: row["idUser"],
-                        animeName: row["animeName"]
+                        idUser: row["idUser"]
                     });
                 });
             }
@@ -71,9 +65,9 @@ export class FavorisController {
         return null;
     }
 
-    async createFavoris(favoris: Favoris):Promise<boolean>{
+    async createFavorite(favoris: Favorite):Promise<boolean>{
         try{
-            const res = await this.connection.query("INSERT INTO `favoris` (idFavoris, idAnime, idUser, animeName) VALUES (?,?,?,?)",[favoris.idFavoris,favoris.idAnime,favoris.idUser,favoris.animeName]);
+            const res = await this.connection.query("INSERT INTO `favorite` (idFavorite, idAnime, idUser) VALUES (?,?,?)",[favoris.idFavorite,favoris.idAnime,favoris.idUser]);
             const headers = res[0] as ResultSetHeader
             return headers.affectedRows===1
 
@@ -85,9 +79,9 @@ export class FavorisController {
 
 
 
-    async removeById(idChanel: number): Promise<boolean>{
+    async removeById(idFavorite: number): Promise<boolean>{
         try{
-            const res = await this.connection.execute(`DELETE FROM chanel WHERE idChanel = ${idChanel}`)
+            const res = await this.connection.execute(`DELETE FROM favorite WHERE idFavorite = ${idFavorite}`)
             const headers = res[0] as ResultSetHeader
             return headers.affectedRows===1
 

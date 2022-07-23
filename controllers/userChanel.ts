@@ -29,15 +29,15 @@ export class UserChanelController {
         try {
             const res = await this.connection.query(`SELECT idChanel,idUser FROM userchanel WHERE idUser = ${userId}`);
             const data = res[0];
-            if(Array.isArray(data)) {
-                return (data as RowDataPacket[]).map(function(row) {
-                    // @ts-ignore
+            if(Array.isArray(data)){
+                return (data as RowDataPacket[]).map(function (row) {
                     return new userChanel({
-                        idChanel: row["idChanel"],
+                        idChanel:row["idChanel"],
                         idUser: row["idUser"]
                     });
                 });
             }
+
         } catch(err) {
             console.error(err);
         }
@@ -50,7 +50,6 @@ export class UserChanelController {
             const data = res[0];
             if(Array.isArray(data)) {
                 return (data as RowDataPacket[]).map(function(row) {
-                    // @ts-ignore
                     return new userChanel({
                         idChanel: row["idChanel"],
                         idUser: row["idUser"]
