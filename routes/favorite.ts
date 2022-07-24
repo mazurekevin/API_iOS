@@ -7,7 +7,7 @@ import {FavoritesController} from "../controllers/favorite";
 
 const routerFavorite = express.Router();
 
-routerFavorite.get("/getFavorisById/:id", async function(req, res, next){
+routerFavorite.get("/getFavoritesById/:id", async function(req, res, next){
     const connection = await DatabaseUtils.getConnection()
     const favorisController = new FavoritesController(connection)
     let id = Number(req.params.id);
@@ -20,7 +20,7 @@ routerFavorite.get("/getFavorisById/:id", async function(req, res, next){
 
 })
 
-routerFavorite.get("/getfavorisByUserId/:id", async function(req, res, next){
+routerFavorite.get("/getfavoritesByUserId/:id", async function(req, res, next){
     const connection = await DatabaseUtils.getConnection()
     const favorisController = new FavoritesController(connection)
     let id = Number(req.params.id);
@@ -46,7 +46,7 @@ routerFavorite.get("/getAll", async function(req, res, next){
 })
 
 
-routerFavorite.post("/createFavoris",async function(req,res,next){
+routerFavorite.post("/createFavorite",async function(req,res,next){
     const connection = await DatabaseUtils.getConnection()
     const favorisController = new FavoritesController(connection);
     const success = await favorisController.createFavorite(req.body)

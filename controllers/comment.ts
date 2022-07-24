@@ -98,7 +98,7 @@ export class CommentController{
 
     async createComment(comment: Comment):Promise<boolean>{
         try{
-            const res = await this.connection.query("INSERT INTO `comment` (idComment,idChanel,idUser,username,content,createDate) VALUES (?,?,?,?,?,?)",[comment.idComment,comment.idChanel,comment.idUser,comment.username,comment.content,comment.createDate]);
+            const res = await this.connection.query("INSERT INTO `comment` (idComment,idChanel,idUser,username,content) VALUES (?,?,?,?,?)",[comment.idComment,comment.idChanel,comment.idUser,comment.username,comment.content]);
             const headers = res[0] as ResultSetHeader
             return headers.affectedRows===1
 

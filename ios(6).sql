@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Jul 23, 2022 at 02:13 PM
+-- Generation Time: Jul 24, 2022 at 01:51 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -56,7 +56,7 @@ CREATE TABLE `comment` (
   `idUser` int(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `content` varchar(255) NOT NULL,
-  `createDate` varchar(255) NOT NULL
+  `createDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -64,7 +64,14 @@ CREATE TABLE `comment` (
 --
 
 INSERT INTO `comment` (`idComment`, `idChanel`, `idUser`, `username`, `content`, `createDate`) VALUES
-(1, 34567, 1, 'kevin', 'ndjvfjhjdkdnvkfjb', '');
+(3, 34567, 1, 'kevin', 'ndjvfjhjdkdnvkfjb', '2022-07-24 13:21:30'),
+(4, 34567, 1, 'kevin', 'ndjvfjhjdkdnvkfjb', '2022-07-24 13:21:49'),
+(5, 34567, 1, 'kevin', 'ndjvfjhjdkdnvkfjb', '2022-07-24 13:46:41'),
+(6, 345, 1, 'kevin', 'ndjvfjhjdkdnvkfjb', '2022-07-24 13:46:47'),
+(7, 345, 1, 'kevin', 'ndjvfjhjdkdnvkfjb', '2022-07-24 13:46:48'),
+(8, 345, 1, 'kevin', 'ndjvfjhjdkdnvkfjb', '2022-07-24 13:46:49'),
+(9, 345, 1, 'kevin', 'ndjvfjhjdkdnvkfjb', '2022-07-24 13:46:50'),
+(10, 34, 1, 'kevin', 'ndjvfjhjdkdnvkfjb', '2022-07-24 13:46:57');
 
 -- --------------------------------------------------------
 
@@ -127,7 +134,9 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `name`, `mail`, `password`) VALUES
 (1, 'Jeanmmm', 'test@test.fr', 'jesuislemdp'),
 (2, 'Jeanmmm', 'test@test.fr', 'jesuislemdp'),
-(3, 'Jeanmmm', 'test@test.fr', 'jesuislemdp');
+(3, 'Jeanmmm', 'test@test.fr', 'jesuislemdp'),
+(4, 'e', 'd@y.com', 'dededeede'),
+(5, 'e', 'd@y.com', 'dededeede');
 
 -- --------------------------------------------------------
 
@@ -195,7 +204,7 @@ ALTER TABLE `chanel`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `idComment` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idComment` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `favorite`
@@ -213,7 +222,7 @@ ALTER TABLE `tablelike`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
